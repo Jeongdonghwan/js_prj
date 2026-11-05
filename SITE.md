@@ -30,6 +30,6 @@
 - 공통 CSS: `.pband`(사진 띠: 사진 밝기 .38 + 흰 글), `.bignums-in`, `.cta-bar`, `.mosaic`
 - 사진 16장(`public/img/CREDITS.txt` — Unsplash 11, Openverse CC0 5: rawpixel·stocksnap). 그라데이션은 사진 덮개 4곳으로 제한(린트 상한)
 - 로컬 미리보기: `scratchpad/serve.py`(Cache-Control: no-store) 포트 18961
-- **배포(2026-11-05)**: 저장소 `https://github.com/Jeongdonghwan/js_prj.git` (main=소스, deploy=빌드 결과). `bash scripts/deploy.sh http://172.237.20.244:8097` → 서버 `/var/www/jcsolution`, nginx 미리보기 포트 **8097**(noindex, robots Disallow). 푸시는 HTTP/1.1 강제(`http.version`, HTTP/2에서 끊김). 서버 갱신: `cd /var/www/jcsolution && git fetch -q origin deploy && git reset -q --hard origin/deploy`
+- **배포(2026-11-05)**: 저장소 `https://github.com/Jeongdonghwan/js_prj.git` (main=소스, deploy=빌드 결과). `bash scripts/deploy.sh http://172.237.20.244:8111` → 서버 `/var/www/jcsolution`, nginx 미리보기 포트 **8111**(noindex, robots Disallow). 푸시는 HTTP/1.1 강제(`http.version`, HTTP/2에서 끊김). 서버 갱신: `cd /var/www/jcsolution && git fetch -q origin deploy && git reset -q --hard origin/deploy`
 - 채택 뒤: 나머지 시안 파일(`StoryB/CrossC/AppE/Heroes/Body` 중 안 쓰는 것, `app/{b,c,d,e}`)·`Variants` 탭·안 쓰는 CSS·사진 삭제
 - 인트로(components/Splash.tsx): 남색 막, 로고 → JC SOLUTION → 갈라짐 2.7초, 탭당 1번
