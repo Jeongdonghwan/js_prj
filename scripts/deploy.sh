@@ -10,7 +10,7 @@ SITE_URL=$URL npx next build
 REMOTE=$(git remote get-url origin)
 cd out
 git init -q -b deploy && git add -A
-git -c user.name="$(git -C .. config user.name)" -c user.email="$(git -C .. config user.email)" commit -q -m "deploy: $(date +%F) 시안 A~E"
+git -c user.name="$(git -C .. config user.name)" -c user.email="$(git -C .. config user.email)" commit -q -m "deploy: $(date +%F) 시안 A"
 git -c http.version=HTTP/1.1 push -q -f "$REMOTE" deploy
 rm -rf .git
 echo "deploy 브랜치 갱신 완료: $(find . -name '*.html' | wc -l) html"

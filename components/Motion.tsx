@@ -50,18 +50,7 @@ export default function Motion() {
     };
     document.addEventListener('click', onClick);
 
-    // 스크롤 스토리([data-story]) — 화면 가운데에 온 .story-step 번호에 맞춰 .story-screen 하나만 보인다
-    const sos = Array.from(document.querySelectorAll<HTMLElement>('[data-story]')).map((story) => {
-      const steps = Array.from(story.querySelectorAll<HTMLElement>('.story-step'));
-      const screens = Array.from(story.querySelectorAll<HTMLElement>('.story-screen'));
-      const set = (i: number) => { steps.forEach((s, j) => s.classList.toggle('on', j === i)); screens.forEach((s, j) => s.classList.toggle('on', j === i)); };
-      set(0);
-      const so = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set(Number((e.target as HTMLElement).dataset.step))), { rootMargin: '-45% 0px -45% 0px' });
-      steps.forEach((s) => so.observe(s));
-      return so;
-    });
-
-    return () => { io.disconnect(); sos.forEach((o) => o.disconnect()); window.removeEventListener('scroll', onScroll); document.removeEventListener('click', onClick); };
+    return () => { io.disconnect(); window.removeEventListener('scroll', onScroll); document.removeEventListener('click', onClick); };
   }, [pathname]);
   return null;
 }

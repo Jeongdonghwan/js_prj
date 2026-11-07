@@ -33,3 +33,11 @@
 - **배포(2026-11-05)**: 저장소 `https://github.com/Jeongdonghwan/js_prj.git` (main=소스, deploy=빌드 결과). `bash scripts/deploy.sh http://172.237.20.244:8111` → 서버 `/var/www/jcsolution`, nginx 미리보기 포트 **8111**(noindex, robots Disallow). 푸시는 HTTP/1.1 강제(`http.version`, HTTP/2에서 끊김). 서버 갱신: `cd /var/www/jcsolution && git fetch -q origin deploy && git reset -q --hard origin/deploy`
 - 채택 뒤: 나머지 시안 파일(`StoryB/CrossC/AppE/Heroes/Body` 중 안 쓰는 것, `app/{b,c,d,e}`)·`Variants` 탭·안 쓰는 CSS·사진 삭제
 - 인트로(components/Splash.tsx): 남색 막, 로고 → JC SOLUTION → 갈라짐 2.7초, 탭당 1번
+
+## 확정 (2026-11-07, 사용자 결정) — 시안 A, B~E 삭제
+- 브랜드 표기: 헤더 로고 옆 **한국금융범죄대응센터 / Korea Financial Crime Response Center** (`lib/site.ts` BRAND·BRAND_EN). 사업자 상호는 제이씨(JC)
+- 사업자 정보(사업자등록증명 2026-11-04): 제이씨(JC) · 390-07-03777 · 경기도 김포시 하성면 귀전로 212. **대표자 이름은 싣지 않는다**(사용자 결정). 이메일·전화·카카오 채널은 아직 TODO
+- 히어로 아래 띠: 아이콘(동그란 선) + 라벨 + 큰 숫자. 지금은 법 기준 3개(`lib/content.ts` RESULTS). 레퍼런스의 누적 상담·중단율·해결 사례·만족도 같은 실적 숫자는 **실제 집계를 받은 뒤** RESULTS 에 추가 — 근거 없는 숫자는 넣지 않는다
+- "실제 사례" → **"실제 후기"**. 홈의 폰 화면 띠는 예시로 두고, 후기 게시판 `/review/` 로 연결
+- 후기 게시판: `api/app.py` (Flask+SQLite, 127.0.0.1:8112, nginx 가 `/api/` 프록시). 이름은 앞 두 글자 + `****` 로 저장(원래 이름 저장 안 함), 연락처 안 받음, 링크 금지, IP 당 60초 1건, 함정 칸. 관리 `/api/admin` (Basic Auth admin/1234 — 서비스 파일 Environment 에서 바꾼다). 검사: `cd api && python test_app.py`
+- 서버 설치(1회): `/var/www/jcsolution_api` 에 api/ 복사 → venv → `jcreview.service` → nginx 8111 블록에 `location /api/ { proxy_pass http://127.0.0.1:8112; proxy_set_header X-Forwarded-For $remote_addr; }`

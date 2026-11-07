@@ -1,4 +1,4 @@
-// 공통 조각: 상담 버튼, HTML 폰 화면(한 사례), 사례 슬라이더, 플로팅 버튼, 시안 전환 탭
+// 공통 조각: 상담 버튼, HTML 폰 화면(한 사례), 후기 띠, 플로팅 버튼
 import { CASES } from '../lib/content';
 import { CONTACT, tel } from '../lib/site';
 
@@ -27,13 +27,14 @@ export const CaseCopy = ({ c }: { c: (typeof CASES)[number] }) => (
   <div className="case-copy"><span className="tag">{c.result}</span><b>{c.title}</b><small>{c.who}</small></div>
 );
 
-export const CASE_NOTE = '대응 전 협박 메시지와 대응 후 달라진 반응입니다. 화면은 예시이며 실제 사례는 당사자 동의와 개인정보 가림 뒤 게시합니다.';
+export const CASE_NOTE = '대응 전 협박 메시지와 대응 후 달라진 반응입니다. 화면은 예시이며, 실제 후기는 이름을 가린 채 후기 게시판에 올라옵니다.';
 
 export const Cases = () => (
   <section className="sec soft cases" id="cases">
     <div className="wrap">
       <div className="head" data-reveal>
-        <div><h2 className="title">실제 사례</h2><p>{CASE_NOTE}</p></div>
+        <div><h2 className="title">실제 후기</h2><p>{CASE_NOTE}</p></div>
+        <a className="more" href="/review/">후기 게시판 보기</a>
       </div>
     </div>
     {/* 사례가 띠처럼 계속 흐른다(CSS marquee). 두 벌을 이어 붙여 끊김 없이 돈다. 손을 올리면 멈춤 */}
@@ -48,13 +49,5 @@ export const Floating = () => (
     <a href={CONTACT.kakao} className="fl kakao"><IcTalk /><span>카카오톡<br />상담</span></a>
     <a href={tel} className="fl call"><IcPhone /><span>전화<br />상담</span></a>
     <a href="#top" className="fl top" aria-label="맨 위로"><IcUp /><span>TOP</span></a>
-  </nav>
-);
-
-// 시안 전환 탭 — 초안 확인용. 채택 뒤 지운다.
-export const Variants = ({ cur }: { cur: 'a' | 'b' | 'c' | 'd' | 'e' }) => (
-  <nav className="variants" aria-label="시안">
-    <span>시안</span>
-    {[['a', '/', 'A'], ['b', '/b/', 'B'], ['c', '/c/', 'C'], ['d', '/d/', 'D'], ['e', '/e/', 'E']].map(([k, h, l]) => <a key={k} href={h} className={k === cur ? 'on' : ''}>{l}</a>)}
   </nav>
 );

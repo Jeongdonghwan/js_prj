@@ -1,8 +1,7 @@
-// 히어로 아래 본문 — 네 안이 뼈대부터 다르다.
-// A 편집형(큰 번호 섹션, 유형 큰 글 목록, 기록 타일) / B 사례 지그재그 먼저, 아코디언 2열 / C 전부 선 격자, 사례 3×2 / D 레퍼런스형(남색 특징 띠, 폰 5대 한 줄)
+// 히어로 아래 본문 — 편집형(큰 번호 섹션, 유형 큰 글 목록, 기록 타일)
 import { BRAND, CONTACT, tel } from '../lib/site';
-import { STEPS, RECORDS, OFFICES, FACTS, TYPES, FAQ, CASES } from '../lib/content';
-import { Cta, Cases, Phone, CaseCopy, CASE_NOTE } from './Ui';
+import { STEPS, RECORDS, OFFICES, FACTS, TYPES, FAQ } from '../lib/content';
+import { Cta, Cases } from './Ui';
 
 const no = (i: number) => String(i + 1).padStart(2, '0');
 const faqText = (a: string) => a.replace('법률 대리는', `${BRAND}는 법률 대리를`);
@@ -46,7 +45,6 @@ export const Faq = ({ cls = '' }: { cls?: string }) => <div className={`faq ${cl
 
 const Closing = ({ cls = '', bigTel }: { cls?: string; bigTel?: boolean }) => (
   <section className={`closing ${cls}`}>
-    {cls === 'closing-c' && <img src="/img/office.webp" alt="" aria-hidden="true" loading="lazy" width={1600} height={1068} />}
     <div className="wrap closing-in" data-reveal>
       <h2>혼자 고민하지 마세요.<br />통화 기록만 있어도 상담을 시작할 수 있습니다.</h2>
       {bigTel && <p className="closing-tel"><a href={tel}>{CONTACT.phone}</a></p>}
@@ -87,156 +85,5 @@ export const BodyA = () => (
       </div></div>
     </section>
     <Closing bigTel />
-  </>
-);
-
-// ---------- B 사례형: 사례 지그재그(대응 전→후 한 줄씩) → 진행 세로 목록+사진 → 기록 사진 띠 → 유형·FAQ 아코디언 2열 → 숫자 띠 → 마무리
-export const BodyB = () => (
-  <>
-    <SelfCheck />
-    <section className="sec" id="cases">
-      <div className="wrap">
-        <div className="head" data-reveal><div><h2 className="title">실제 사례, <em>대응 전과 후</em></h2><p>{CASE_NOTE}</p></div></div>
-        <ol className="zigzag">
-          {CASES.slice(0, 4).map((c, i) => (
-            <li key={c.title} data-reveal>
-              <Phone c={c} />
-              <div className="zz-copy">
-                <span className="zz-no">{no(i)}</span>
-                <CaseCopy c={c} />
-                <dl className="zz-ba"><dt>대응 전</dt><dd>“{c.msgs[0].t}”</dd><dt>대응 후</dt><dd>“{c.msgs[c.msgs.length - 1].t}”</dd></dl>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-    <section className="sec soft" id="process">
-      <div className="wrap process-b">
-        <div>
-          <h2 className="title" data-reveal>기록부터 신고까지<br /><em>순서대로</em> 함께합니다</h2>
-          <ol className="steps-b reveal-group">{STEPS.map(([t, d], i) => <li key={t}><span>{no(i)}</span><div><b>{t}</b><p>{d}</p></div></li>)}</ol>
-        </div>
-        <figure className="photo" data-reveal><img src="/img/office.webp" alt="조용한 사무실 복도" loading="lazy" width={1600} height={1068} /></figure>
-      </div>
-    </section>
-    <section className="record-b" id="record">
-      <img src="/img/record.webp" alt="노트에 통화 기록을 적는 손" loading="lazy" width={1600} height={1067} />
-      <div className="wrap record-b-in">
-        <h2 className="title" data-reveal>오늘 바로 남겨 둘 기록 <em>4가지</em></h2>
-        <ol className="records light reveal-group">{RECORDS.map(([t, d]) => <li key={t}><b>{t}</b><p>{d}</p></li>)}</ol>
-        <dl className="offices light" data-reveal>{OFFICES.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-      </div>
-    </section>
-    <section className="sec" id="types">
-      <div className="wrap acc-wrap">
-        <div>
-          <h2 className="title" data-reveal>빚이 있어도<br /><em>이런 추심은 불법</em>입니다</h2>
-          <div className="faq acc">{TYPES.map(([t, d], i) => <details key={t} data-reveal><summary><span>{no(i)}</span>{t}<i /></summary><p>{d}</p></details>)}</div>
-        </div>
-        <div id="faq">
-          <h2 className="title" data-reveal>자주 묻는 질문</h2>
-          <Faq cls="acc" />
-        </div>
-      </div>
-    </section>
-    <Band />
-    <Closing />
-  </>
-);
-
-// ---------- C 격자형: 전부 선으로 나눈 칸. 진행 4칸 → 숫자·기관 6칸 → 사례 3×2 → 유형 3×2 → 기록(사진 우) → FAQ 2열 → 사진 마무리
-export const BodyC = () => (
-  <>
-    <SelfCheck />
-    <section className="sec" id="process">
-      <div className="wrap">
-        <div className="gc-head" data-reveal><h2 className="title">기록부터 신고까지 <em>순서대로</em></h2><p>첫 상담에서 신고·차단까지 네 단계로 진행합니다.</p></div>
-        <ol className="gc-steps reveal-group">{STEPS.map(([t, d], i) => <li key={t}><span>{no(i)}</span><b>{t}</b><p>{d}</p></li>)}</ol>
-        <dl className="stat-tiles">{[...FACTS, ...OFFICES].map(([k, v], i) => <div key={k} data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-      </div>
-    </section>
-    <section className="sec soft" id="cases">
-      <div className="wrap">
-        <div className="gc-head" data-reveal><h2 className="title">실제 사례</h2><p>{CASE_NOTE}</p></div>
-        <ul className="cases-grid">{CASES.map((c, i) => <li key={c.title} data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}><Phone c={c} /><CaseCopy c={c} /></li>)}</ul>
-      </div>
-    </section>
-    <section className="sec" id="types">
-      <div className="wrap">
-        <div className="gc-head" data-reveal><h2 className="title">빚이 있어도 <em>이런 추심은 불법</em>입니다</h2><p>채권의 공정한 추심에 관한 법률은 채무가 있어도 아래 행위를 금지합니다.</p></div>
-        <ol className="gc-types">{TYPES.map(([t, d], i) => <li key={t} data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}><span>{no(i)}</span><b>{t}</b><p>{d}</p></li>)}</ol>
-      </div>
-    </section>
-    <section className="sec soft" id="record">
-      <div className="wrap record flip">
-        <figure className="photo" data-reveal><img src="/img/record.webp" alt="노트에 통화 기록을 적는 손" loading="lazy" width={1600} height={1067} /></figure>
-        <div>
-          <h2 className="title" data-reveal>오늘 바로<br />남겨 둘 기록 <em>4가지</em></h2>
-          <ol className="records reveal-group">{RECORDS.map(([t, d]) => <li key={t}><b>{t}</b><p>{d}</p></li>)}</ol>
-        </div>
-      </div>
-    </section>
-    <section className="sec" id="faq">
-      <div className="wrap">
-        <div className="gc-head" data-reveal><h2 className="title">자주 묻는 질문</h2></div>
-        <Faq cls="faq-c" />
-      </div>
-    </section>
-    <Closing cls="closing-c" />
-  </>
-);
-
-// ---------- D 레퍼런스형: 흰 특징 띠(StripD, 페이지에서) → 숫자 띠 → 남색 "범죄입니다" 띠(3칸 + 전화 박스) → 폰 5대 한 줄 → 진행 4열 → 유형 3열 → 기록 → FAQ → 마무리
-const D_FEATS: [string, string][] = [
-  ['전화·카카오톡 상담', '통화 기록만 있어도 상담을 시작할 수 있습니다'],
-  ['신고 접수 안내', '금융감독원 1332, 경찰 112 접수 순서를 함께 잡습니다'],
-  ['소송·고소는 변호사 안내', `${BRAND}는 법률 대리를 하지 않습니다. 대한법률구조공단 132`],
-];
-export const BodyD = () => (
-  <>
-    <SelfCheck />
-    <section className="d-band">
-      <div className="wrap d-band-in">
-        <div className="d-band-copy" data-reveal><b>불법추심은 범죄입니다.</b><p>기록이 있으면<br />신고할 수 있습니다.</p></div>
-        <ul className="d-feats reveal-group">{D_FEATS.map(([t, d]) => <li key={t}><b>{t}</b><p>{d}</p></li>)}</ul>
-        <a className="d-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone}</b><span>전화 · 카카오톡</span></a>
-      </div>
-    </section>
-    <section className="sec" id="cases">
-      <div className="wrap">
-        <div className="head" data-reveal><div><h2 className="title">실제 피해 사례</h2><p>{CASE_NOTE}</p></div></div>
-        <ul className="cases-row">{CASES.slice(0, 5).map((c, i) => <li key={c.title} data-reveal style={{ transitionDelay: `${i * 70}ms` }}><Phone c={c} /><CaseCopy c={c} /></li>)}</ul>
-      </div>
-    </section>
-    <section className="sec soft" id="process">
-      <div className="wrap process">
-        <h2 className="title" data-reveal>기록부터 신고까지<br /><em>순서대로</em> 함께합니다</h2>
-        <ol className="steps reveal-group">{STEPS.map(([t, d], i) => <li key={t}><span>{no(i)}</span><b>{t}</b><p>{d}</p></li>)}</ol>
-      </div>
-    </section>
-    <section className="sec" id="types">
-      <div className="wrap">
-        <div className="head" data-reveal><div><h2 className="title">빚이 있어도 <em>이런 추심은 불법</em>입니다</h2><p>채권의 공정한 추심에 관한 법률은 채무가 있어도 아래 행위를 금지합니다.</p></div></div>
-        <ol className="types">{TYPES.map(([t, d], i) => <li key={t} data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}><span>{no(i)}</span><b>{t}</b><p>{d}</p></li>)}</ol>
-      </div>
-    </section>
-    <section className="sec soft" id="record">
-      <div className="wrap record">
-        <figure className="photo" data-reveal><img src="/img/record.webp" alt="노트에 통화 기록을 적는 손" loading="lazy" width={1600} height={1067} /></figure>
-        <div>
-          <h2 className="title" data-reveal>오늘 바로<br />남겨 둘 기록 <em>4가지</em></h2>
-          <ol className="records reveal-group">{RECORDS.map(([t, d]) => <li key={t}><b>{t}</b><p>{d}</p></li>)}</ol>
-          <dl className="offices" data-reveal>{OFFICES.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-        </div>
-      </div>
-    </section>
-    <section className="sec" id="faq">
-      <div className="wrap faq-wrap">
-        <div><h2 className="title" data-reveal>자주 묻는 질문</h2><figure className="photo small" data-reveal><img src="/img/office.webp" alt="조용한 사무실 복도" loading="lazy" width={1600} height={1068} /></figure></div>
-        <Faq />
-      </div>
-    </section>
-    <Closing />
   </>
 );
