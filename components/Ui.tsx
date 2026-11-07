@@ -9,7 +9,7 @@ const IcUp = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" s
 export const Cta = ({ center, light }: { center?: boolean; light?: boolean }) => (
   <div className={`cta${center ? ' center' : ''}`}>
     <a className="btn kakao" href={CONTACT.kakao}><IcTalk /><span>카카오톡 상담</span></a>
-    <a className={`btn ${light ? 'white' : 'navy'}`} href={tel}><IcPhone /><span>전화 상담 {CONTACT.phone}</span></a>
+    <a className={`btn ${light ? 'white' : 'navy'}`} href={tel}><IcPhone /><span>전화 상담{CONTACT.phone && ` ${CONTACT.phone}`}</span></a>
   </div>
 );
 

@@ -1,7 +1,7 @@
 // 히어로 아래 본문 — 편집형(큰 번호 섹션, 유형 큰 글 목록, 기록 타일)
 import { BRAND, CONTACT, tel } from '../lib/site';
 import { STEPS, RECORDS, OFFICES, FACTS, TYPES, FAQ } from '../lib/content';
-import { Cta, Cases } from './Ui';
+import { Cta, Cases, IcPhone } from './Ui';
 
 const no = (i: number) => String(i + 1).padStart(2, '0');
 const faqText = (a: string) => a.replace('법률 대리는', `${BRAND}는 법률 대리를`);
@@ -36,7 +36,7 @@ export const Band = () => (
   <section className="band">
     <div className="wrap band-in">
       <dl className="facts">{FACTS.map(([k, v], i) => <div key={k} data-reveal style={{ transitionDelay: `${i * 100}ms` }}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-      <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone}</b><span>전화 · 카카오톡</span></a>
+      <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone || <IcPhone />}</b><span>전화 · 카카오톡</span></a>
     </div>
   </section>
 );
@@ -47,7 +47,7 @@ const Closing = ({ cls = '', bigTel }: { cls?: string; bigTel?: boolean }) => (
   <section className={`closing ${cls}`}>
     <div className="wrap closing-in" data-reveal>
       <h2>혼자 고민하지 마세요.<br />통화 기록만 있어도 상담을 시작할 수 있습니다.</h2>
-      {bigTel && <p className="closing-tel"><a href={tel}>{CONTACT.phone}</a></p>}
+      {bigTel && CONTACT.phone && <p className="closing-tel"><a href={tel}>{CONTACT.phone}</a></p>}
       <Cta center light />
     </div>
   </section>

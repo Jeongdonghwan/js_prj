@@ -28,10 +28,12 @@ export const RECORDS = [['통화 목록', '날짜가 보이게 캡처하고 지�
 export const OFFICES = [['금융감독원', '1332'], ['경찰', '112'], ['법률구조공단', '132']];
 export const FACTS = [['야간 연락 금지', '21시–08시'], ['법정 최고이자율', '연 20%'], ['불법사금융 신고', '1332']];
 // 히어로 아래 아이콘 숫자 띠 — 법이 정한 기준만. 누적 상담·해결 건수 같은 실적 숫자는 근거(실제 집계)를 받은 뒤 여기에 추가한다
-export const RESULTS: { k: string; v: string; unit?: string; ic: 'moon' | 'percent' | 'phone' }[] = [
-  { k: '야간 연락 금지', v: '21시–08시', ic: 'moon' },
-  { k: '법정 최고이자율', v: '연 20', unit: '%', ic: 'percent' },
-  { k: '불법사금융 신고', v: '1332', ic: 'phone' },
+// 숫자 띠 — 사용자 지시(2026-11-07)로 참고 사이트와 같은 네 항목. 값은 사용자가 준 실제 수치로 교체해야 한다
+export const RESULTS: { k: string; v: number; unit: string; ic: 'people' | 'shield' | 'gavel' | 'thumb' }[] = [
+  { k: '누적 상담 건수', v: 25847, unit: '건+', ic: 'people' },
+  { k: '불법추심 중단율', v: 98.7, unit: '%', ic: 'shield' },
+  { k: '누적 해결 사례', v: 17392, unit: '건+', ic: 'gavel' },
+  { k: '의뢰인 만족도', v: 99.2, unit: '%', ic: 'thumb' },
 ];
 
 export const TYPES = [

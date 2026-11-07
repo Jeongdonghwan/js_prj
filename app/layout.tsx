@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/review/">실제 후기</a>
               <a href="#types">불법추심 유형</a>
               <a href="#faq">자주 묻는 질문</a>
-              <a href={tel} className="nav-call"><IcPhone />{CONTACT.phone}</a>
+              <a href={tel} className="nav-call" aria-label="전화 상담"><IcPhone />{CONTACT.phone}</a>
             </nav>
           </div>
         </header>

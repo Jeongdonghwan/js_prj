@@ -5,7 +5,7 @@ export const BRAND_EN = 'Korea Financial Crime Response Center';
 export const SERVICE = '불법추심 대응 상담';
 
 export const CONTACT = {
-  phone: '0000-0000', // TODO 대표 전화
+  phone: '', // 번호 공개 전 — 비우면 전화 버튼은 아이콘만 보인다 (사용자 결정 2026-11-07)
   kakao: '#', // TODO 카카오톡 채널 주소
 };
 

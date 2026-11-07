@@ -5,9 +5,10 @@ import { Cta } from './Ui';
 
 // 선 아이콘 3개 — 달(야간), 퍼센트, 수화기
 const IC = {
-  moon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" /></svg>,
-  percent: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M19 5 5 19" /><circle cx="7.5" cy="7.5" r="2.5" /><circle cx="16.5" cy="16.5" r="2.5" /></svg>,
-  phone: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" /></svg>,
+  people: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2" /><circle cx="16.5" cy="9.5" r="2.5" /><path d="M3 19a6 6 0 0 1 12 0M14.5 15.5A4.5 4.5 0 0 1 21 19" /></svg>,
+  shield: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8 7.5 9.5 4.3-1.5 7.5-4.9 7.5-9.5V6z" /><path d="m8.8 12 2.2 2.2 4.3-4.4" /></svg>,
+  gavel: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m13 5 6 6M9 9l6 6M3 21l8-8M15.5 2.5l6 6-3 3-6-6z" /><path d="M11 21h8" /></svg>,
+  thumb: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 11v9H3.5v-9zM7 11l3.5-7.5a2 2 0 0 1 2 2V10h5.3a2 2 0 0 1 2 2.3l-1 6a2 2 0 0 1-2 1.7H7" /></svg>,
 };
 
 const Marquee = () => <div className="marquee" aria-hidden="true"><div className="marquee-in">{[...TYPES, ...TYPES].map(([t], i) => <span key={i}>{t}</span>)}</div></div>;
@@ -27,8 +28,8 @@ export const HeroA = () => (
     <Marquee />
     <div className="ta-foot"><div className="wrap">
       <div className="results">
-        <p className="results-cap" data-reveal>법이 정한<br />기준</p>
-        {RESULTS.map((r, i) => <div key={r.k} className="rt" data-reveal style={{ transitionDelay: `${i * 100}ms` }}><i className="ic">{IC[r.ic]}</i><div><span>{r.k}</span><b>{r.v}{r.unit && <small>{r.unit}</small>}</b></div></div>)}
+        <p className="results-cap" data-reveal>숫자로 보는<br />대응 결과</p>
+        {RESULTS.map((r, i) => <div key={r.k} className="rt" data-reveal style={{ transitionDelay: `${i * 100}ms` }}><i className="ic">{IC[r.ic]}</i><div><span>{r.k}</span><b><em data-count={r.v}>0</em><small>{r.unit}</small></b></div></div>)}
       </div>
     </div></div>
   </section>
