@@ -2,6 +2,7 @@
 import { BRAND, CONTACT, tel } from '../lib/site';
 import { STEPS, RECORDS, OFFICES, FACTS, TYPES, FAQ } from '../lib/content';
 import { Cta, Cases, IcPhone } from './Ui';
+import { Stats } from './Heroes';
 
 const no = (i: number) => String(i + 1).padStart(2, '0');
 const faqText = (a: string) => a.replace('법률 대리는', `${BRAND}는 법률 대리를`);
@@ -35,7 +36,7 @@ export const SelfCheck = () => (
 export const Band = () => (
   <section className="band">
     <div className="wrap band-in">
-      <dl className="facts">{FACTS.map(([k, v], i) => <div key={k} data-reveal style={{ transitionDelay: `${i * 100}ms` }}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      <Stats cap={<>법이 정한<br />기준</>} items={FACTS} />
       <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone || <IcPhone />}</b><span>전화 · 카카오톡</span></a>
     </div>
   </section>
