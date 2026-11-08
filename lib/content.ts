@@ -26,14 +26,9 @@ export const CASES: { title: string; who: string; result: string; from: string; 
 
 export const RECORDS = [['통화 목록', '날짜가 보이게 캡처하고 지우지 않기'], ['문자·메신저', '보낸 번호와 시간까지 저장'], ['통화 녹음', '내가 받은 통화는 녹음 가능'], ['입출금', '받은 돈·갚은 돈·요구받은 돈을 날짜별로']];
 export const OFFICES = [['금융감독원', '1332'], ['경찰', '112'], ['법률구조공단', '132']];
-export const FACTS: Stat[] = [
-  { k: '야간 연락 금지', v: '21시–08시', ic: 'moon' },
-  { k: '법정 최고이자율', v: '연 20', unit: '%', ic: 'percent' },
-  { k: '불법사금융 신고', v: '1332', ic: 'phone' },
-];
 // 히어로 아래 아이콘 숫자 띠 — 법이 정한 기준만. 누적 상담·해결 건수 같은 실적 숫자는 근거(실제 집계)를 받은 뒤 여기에 추가한다
 // 숫자 띠 — 사용자 지시(2026-11-07)로 참고 사이트와 같은 네 항목. 값은 사용자가 준 실제 수치로 교체해야 한다
-export type Stat = { k: string; v: number | string; unit?: string; ic: 'people' | 'shield' | 'gavel' | 'thumb' | 'moon' | 'percent' | 'phone' };
+export type Stat = { k: string; v: number | string; unit?: string; ic: 'people' | 'shield' | 'gavel' | 'thumb' };
 export const RESULTS: Stat[] = [
   { k: '누적 상담 건수', v: 25847, unit: '건+', ic: 'people' },
   { k: '불법추심 중단율', v: 98.7, unit: '%', ic: 'shield' },

@@ -1,6 +1,6 @@
 // 히어로 아래 본문 — 편집형(큰 번호 섹션, 유형 큰 글 목록, 기록 타일)
 import { BRAND, CONTACT, tel } from '../lib/site';
-import { STEPS, RECORDS, OFFICES, FACTS, TYPES, FAQ } from '../lib/content';
+import { STEPS, RECORDS, OFFICES, RESULTS, TYPES, FAQ } from '../lib/content';
 import { Cta, Cases, IcPhone } from './Ui';
 import { Stats } from './Heroes';
 
@@ -36,7 +36,7 @@ export const SelfCheck = () => (
 export const Band = () => (
   <section className="band">
     <div className="wrap band-in">
-      <Stats cap={<>법이 정한<br />기준</>} items={FACTS} />
+      <Stats cap={<>숫자로 보는<br />대응 결과</>} items={RESULTS} />
       <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone || <IcPhone />}</b><span>전화 · 카카오톡</span></a>
     </div>
   </section>
