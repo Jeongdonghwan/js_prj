@@ -5,8 +5,8 @@ export const BRAND_EN = 'Korea Financial Crime Response Center';
 export const SERVICE = '불법추심 대응 상담';
 
 export const CONTACT = {
-  phone: '', // 번호 공개 전 — 비우면 전화 버튼은 아이콘만 보인다 (사용자 결정 2026-11-07)
-  kakao: '#', // TODO 카카오톡 채널 주소
+  phone: '010-9783-7089', // 2026-11-12 사용자 지정
+  kakao: 'https://open.kakao.com/o/sNfdLhWi', // 카카오톡 오픈채팅 (2026-11-12)
 };
 
 // 사업자등록증명(2026-11-04 발급) 기준. 대표자 이름은 사용자 결정으로 싣지 않는다

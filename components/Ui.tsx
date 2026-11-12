@@ -34,7 +34,7 @@ export const Cases = () => (
     <div className="wrap">
       <div className="head" data-reveal>
         <div><h2 className="title">실제 후기</h2><p>{CASE_NOTE}</p></div>
-        <a className="more" href="/review/">후기 게시판 보기</a>
+        <a className="review-btn" href="/review/">후기 게시판 보기</a>
       </div>
     </div>
     {/* 사례가 띠처럼 계속 흐른다(CSS marquee). 두 벌을 이어 붙여 끊김 없이 돈다. 손을 올리면 멈춤 */}
