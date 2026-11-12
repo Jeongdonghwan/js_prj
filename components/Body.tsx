@@ -37,7 +37,7 @@ export const Band = () => (
   <section className="band">
     <div className="wrap band-in">
       <Stats cap={<>숫자로 보는<br />대응 결과</>} items={RESULTS} />
-      <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b>{CONTACT.phone || <IcPhone />}</b><span>전화 · 카카오톡</span></a>
+      <a className="band-call" href={tel} data-reveal><small>상담 전화</small><b><IcPhone /></b><span>전화 · 카카오톡</span></a>
     </div>
   </section>
 );
@@ -48,7 +48,6 @@ const Closing = ({ cls = '', bigTel }: { cls?: string; bigTel?: boolean }) => (
   <section className={`closing ${cls}`}>
     <div className="wrap closing-in" data-reveal>
       <h2>혼자 고민하지 마세요.<br />통화 기록만 있어도 상담을 시작할 수 있습니다.</h2>
-      {bigTel && CONTACT.phone && <p className="closing-tel"><a href={tel}>{CONTACT.phone}</a></p>}
       <Cta center light />
     </div>
   </section>
