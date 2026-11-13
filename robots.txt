@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://kfcrc.kr
+Sitemap: https://kfcrc.kr/sitemap.xml
