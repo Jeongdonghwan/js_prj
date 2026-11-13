@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import ReviewBoard from '../../components/ReviewBoard';
 import { BRAND } from '../../lib/site';
 
-export const metadata: Metadata = { title: `실제 후기 | ${BRAND}`, description: '불법추심 대응 상담 뒤 달라진 점을 이름을 가린 채 남기는 후기 게시판입니다.', alternates: { canonical: '/review/' } };
+export const metadata: Metadata = { title: `실제 후기 | ${BRAND}`, description: '불법추심 대응 상담 뒤 달라진 점을 이름을 가린 채 남기는 후기 게시판입니다. 글쓴이 이름은 앞 두 글자만 보이고 연락처는 받지 않습니다.', alternates: { canonical: '/review/' }, openGraph: { url: '/review/', title: `실제 후기 | ${BRAND}`, images: ['/og.jpg'] } };
 
 export default function Review() {
   return (
@@ -16,7 +16,7 @@ export default function Review() {
         </div>
       </section>
       <section className="sec soft">
-        <div className="wrap"><ReviewBoard /></div>
+        <div className="wrap"><h2 className="board-h">후기 목록</h2><ReviewBoard /></div>
       </section>
     </main>
   );

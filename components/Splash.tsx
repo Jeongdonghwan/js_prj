@@ -11,7 +11,7 @@ export default function Splash() {
       <i className="sp-panel top" />
       <i className="sp-panel bot" />
       <div className="sp-in">
-        <span className="sp-mark"><img src="/mark-light.png" alt="" width={769} height={457} /></span>
+        <span className="sp-mark"><img src="/mark-light.png" alt="JC 마크" width={769} height={457} /></span>
         <span className="sp-rule" />
         <b className="sp-name">{BRAND}</b>
         <small className="sp-sub">{BRAND_EN}</small>

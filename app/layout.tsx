@@ -10,8 +10,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `${BRAND} | ${SERVICE} — 불법 사채·불법추심 피해 기록과 신고 안내`, template: '%s' },
   description: '폭언·협박, 야간 연락, 가족·지인 연락 같은 불법추심 피해를 상담합니다. 통화·문자 기록 정리부터 신고 절차까지 순서대로 안내합니다.',
-  robots: { index: false, follow: false }, // 초안 — 도메인·사업자 정보 받은 뒤 index 로
   alternates: { canonical: '/' },
+  openGraph: { type: 'website', siteName: BRAND, locale: 'ko_KR', url: '/', images: [{ url: '/og.jpg', width: 1200, height: 630, alt: `${BRAND} ${SERVICE}` }] },
+  twitter: { card: 'summary_large_image', images: ['/og.jpg'] },
   icons: { icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/icon.png', type: 'image/png', sizes: '192x192' }], apple: '/apple-touch-icon.png' },
 };
 
@@ -25,10 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />      </head>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: BRAND, alternateName: BRAND_EN, url: SITE_URL, logo: `${SITE_URL}/icon.png`, contactPoint: { '@type': 'ContactPoint', telephone: CONTACT.phone, contactType: 'customer service', areaServed: 'KR', availableLanguage: 'Korean' } }) }} />
         <Splash />
         <header className="site-header">
           <div className="wrap header-inner">
-            <Link href="/" className="logo"><img src="/logo-ink.png" alt="" width={769} height={593} /><span className="logo-name"><b>{BRAND}</b><small>{BRAND_EN}</small></span></Link>
+            <Link href="/" className="logo"><img src="/logo-ink.png" alt={`${BRAND} 로고`} width={769} height={593} /><span className="logo-name"><b>{BRAND}</b><small>{BRAND_EN}</small></span></Link>
             <nav className="nav">
               <a href="#process">진행 방식</a>
               <a href="/review/">실제 후기</a>

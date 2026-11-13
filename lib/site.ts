@@ -1,5 +1,5 @@
 // 사이트 설정 — 연락처는 사용자에게 받으면 채운다 (TODO 표시 부분)
-export const SITE_URL = process.env.SITE_URL || 'https://example.com'; // TODO 도메인
+export const SITE_URL = process.env.SITE_URL || 'https://kfcrc.kr'; // 2026-11-13 도메인
 export const BRAND = '한국금융범죄대응센터'; // 센터 이름(헤더·본문). 사업자 상호는 BUSINESS.name
 export const BRAND_EN = 'Korea Financial Crime Response Center';
 export const SERVICE = '불법추심 대응 상담';
