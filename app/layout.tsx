@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: { type: 'website', siteName: BRAND, locale: 'ko_KR', url: '/', images: [{ url: '/og.jpg', width: 1200, height: 630, alt: `${BRAND} ${SERVICE}` }] },
   twitter: { card: 'summary_large_image', images: ['/og.jpg'] },
+  verification: { google: 'Lehr8NTpgVbI4Ve-hjoIYkCUOd7J21Abq75EZG12u14', other: { 'naver-site-verification': '6264263f1f971d576a93ad7cbbba33b7876333ba' } },
   icons: { icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/icon.png', type: 'image/png', sizes: '192x192' }], apple: '/apple-touch-icon.png' },
 };
 
