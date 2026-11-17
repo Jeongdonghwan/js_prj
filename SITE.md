@@ -39,7 +39,7 @@
 - 사업자 정보(사업자등록증명 2026-11-04): 제이씨(JC) · 390-07-03777 · 경기도 김포시 하성면 귀전로 212. **대표자 이름은 싣지 않는다**(사용자 결정). 전화 010-9783-7089 · 카카오 오픈채팅 https://open.kakao.com/o/sNfdLhWi (2026-11-12). 이메일은 아직 TODO
 - 히어로 아래 띠: 아이콘(동그란 선) + 라벨 + 큰 숫자(카운트업). 사용자 지시(2026-11-07)로 누적 상담·불법추심 중단율·누적 해결 사례·의뢰인 만족도 4항목(`lib/content.ts` RESULTS). **현재 값은 참고 사이트 숫자** — 실제 집계를 받으면 바꾼다. 전화번호는 비워 두어 전화 버튼은 아이콘만(`lib/site.ts` CONTACT.phone 에 넣으면 다시 표시)
 - "실제 사례" → **"실제 후기"**. 홈의 폰 화면 띠는 예시로 두고, 후기 게시판 `/review/` 로 연결
-- 후기 게시판: `api/app.py` (Flask+SQLite, 127.0.0.1:8112, nginx 가 `/api/` 프록시). 이름은 앞 두 글자 + `****` 로 저장(원래 이름 저장 안 함), 연락처 안 받음, 링크 금지, IP 당 60초 1건, 함정 칸. 관리 `/api/admin` (Basic Auth admin/1234 — 서비스 파일 Environment 에서 바꾼다). 검사: `cd api && python test_app.py`
+- 후기 게시판: `api/app.py` (Flask+SQLite, 127.0.0.1:8112, nginx 가 `/api/` 프록시). 이름은 앞 두 글자 + `****` 로 저장(원래 이름 저장 안 함), 연락처 안 받음, 링크 금지, IP 당 60초 1건, 함정 칸. 관리 `/api/admin` (로그인 화면 → 쿠키 7일, 숨기기·수정·삭제. 계정 admin/1234 — 서비스 파일 Environment 에서 바꾼다). 검사: `cd api && python test_app.py`
 - 서버 설치(1회): `/var/www/jcsolution_api` 에 api/ 복사 → venv → `jcreview.service` → nginx 8111 블록에 `location /api/ { proxy_pass http://127.0.0.1:8112; proxy_set_header X-Forwarded-For $remote_addr; }`
 
 - 후기 게시판 링크(홈 '실제 후기')는 파란 채운 버튼 `.review-btn` — 모바일에서 텍스트 링크가 안 보인다는 요청(2026-11-12)
